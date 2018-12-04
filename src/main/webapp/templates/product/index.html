@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Codecool" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>Codecool Shop</title>
 
@@ -35,7 +35,14 @@
 
 <div class="container">
     <div class="well well-sm">
-        <strong th:text="${category.name}">Category Title</strong>
+        <strong>Category:</strong>
+        <form action="/">
+            <select name="productCategory">
+                <option th:each=" category,iterStat : ${category}" th:name="category" th:text="${category.name}"
+                        class="categorySelection" th:value="${category.id}"></option>
+            </select>
+            <input type="submit" value="submit"></input>
+        </form>
     </div>
 
     <div id="products" class="row list-group">
