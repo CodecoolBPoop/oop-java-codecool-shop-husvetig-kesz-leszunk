@@ -34,14 +34,14 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(tablet);
         ProductCategory cellphone = new ProductCategory("Cellphone", "Hardware", "A cellphone, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(cellphone);
-        ProductCategory spaceShip = new ProductCategory("Space Ship", "Hardware", "A cellphone, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
-        productCategoryDataStore.add(spaceShip);
+        ProductCategory spaceShipPart = new ProductCategory("Spaceship part", "Hardware", "A cellphone, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
+        productCategoryDataStore.add(spaceShipPart);
 
         //setting up products and printing it
         productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
         productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
         productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
-        productDataStore.add(new Product("Test phone", 130, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", cellphone, amazon));
+        productDataStore.add(new Product("Spaceship Engine", 12000, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", spaceShipPart, amazon));
 
     }
 }

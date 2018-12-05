@@ -44,11 +44,12 @@
 }
 
 body, html {
-    background: url("http://inn.spb.ru/images/600/DSC100664338.jpg") no-repeat center center fixed;
+    background: url("/static/img/tatooine_light.png") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-attachment: scroll;
 }
 
 .item.list-group-item
@@ -97,6 +98,10 @@ body, html {
 .list-group-item-text
 {
     margin: 0 0 11px;
+}
+
+#products {
+    padding-bottom: 800px;
 }
 
 a.cart {
