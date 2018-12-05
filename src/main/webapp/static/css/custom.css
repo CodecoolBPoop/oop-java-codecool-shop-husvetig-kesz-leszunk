@@ -1,6 +1,15 @@
 .glyphicon {
     margin-right:5px;
 }
+
+@font-face {
+    font-family: 'Comfortaa Regular';
+    src: local('Aurek-Besh'),
+    local('Aurek-Besh'),
+    url('Aurek-Besh.ttf') format('truetype');
+
+}
+
 .thumbnail
 {
     margin-bottom: 20px;
@@ -9,10 +18,39 @@
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
+
+.jumbotron {
+    background-image: url("/static/img/header_logo.png");
+    background-color: #474342;
+    min-height: 50%;
+    margin-top: 12px;
+    background-repeat: no-repeat;
+    background-position: 5vh;
+    margin-right: 105px;
+    margin-left: 105px;
+    border-radius: 6px;
+    background-size: 9%;
+    font-family: 'Aurek Besh';
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: -28px;
+    margin-bottom: -36px;
+}
+
 .thumbnail img
 {
     margin-top: 10px;
 }
+
+body, html {
+    background: url("http://inn.spb.ru/images/600/DSC100664338.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .item.list-group-item
 {
     float: none;
@@ -59,4 +97,11 @@
 .list-group-item-text
 {
     margin: 0 0 11px;
+}
+
+a.cart {
+    color: #2da1c1;
+    font-size: small;
+    text-decoration: none;
+    float: right;
 }

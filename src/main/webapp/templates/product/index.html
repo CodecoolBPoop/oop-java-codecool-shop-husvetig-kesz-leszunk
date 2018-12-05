@@ -5,7 +5,7 @@
     <meta name="author" content="Codecool"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Codecool Shop</title>
+    <title>Watto Market</title>
 
     <!-- Latest compiled and minified Jquery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -29,9 +29,10 @@
 
 <body>
 
+<div class="bg">
 <div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
-    <p><a href="shopping-cart">Shopping Cart</a></p>
+    <h1> Watto's Shop</h1>
+    <p><a class="cart" href="shopping-cart">Shopping Cart</a></p>
 </div>
 
 <div class="container">
@@ -66,7 +67,7 @@
     </div>
 
 
-    <div id="products" class="row list-group">
+    <div id="products" class="row list-group-transparent">
 
         <div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="thumbnail">
@@ -90,8 +91,7 @@
     </div>
 
 </div>
-
-<div th:replace="footer.html :: copy"></div>
+</div>
 
 </body>
 </html>
