@@ -26,10 +26,12 @@
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
 <body>
-<div class="jumbotron text-center">
-    <h1>Shopping Cart</h1>
-    <p><a href="/">Back</a></p>
+<div class="jumbotron text-center" id="border">
+    <div class="marquee">
+        <h1>Your Shopping cart.</h1>
+    </div>
 </div>
+    <p><a href="/">Back</a></p>
 <div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${product}">
     <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
     <p th:text="${prod.getName()}">Product name</p>
