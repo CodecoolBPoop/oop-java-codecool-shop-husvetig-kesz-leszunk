@@ -127,9 +127,19 @@ body, html {
     padding-bottom: 800px;
 }
 
-a.cart {
-    color: #2da1c1;
-    font-size: small;
-    text-decoration: none;
+#cart{
     float: right;
+    height: 60px;
+    width: 60px;
+    margin-top: 5px;
+    margin-right: 25px;
+}
+
+.zoom {
+    transition: transform .2s; /* Animation */
+}
+
+.zoom:hover {
+    transform: scale(1.01);
+    cursor: pointer;
 }
