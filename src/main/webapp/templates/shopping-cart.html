@@ -30,10 +30,11 @@
     <h1>Shopping Cart</h1>
     <p><a href="/">Back</a></p>
 </div>
-<div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${product}">
-    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
-    <p th:text="${prod.getName()}">Product name</p>
-    <p th:text="${prod.getPrice()}">Product price</p>
+<div class="item col-xs-4 col-lg-4" th:each="orderItem : ${cartContents}">
+    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${orderItem.getProduct().id} + '.jpg'" alt="" />
+    <p th:text="${orderItem.getProduct().getName()}">Product name</p>
+    <p th:text="${orderItem.getProduct().getPrice()}">Product price</p>
+    <p th:text="${orderItem.getAmount()}">1<\p>
 
 </div>
 
