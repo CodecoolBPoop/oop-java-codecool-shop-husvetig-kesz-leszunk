@@ -1,13 +1,9 @@
 .glyphicon {
     margin-right:5px;
 }
-
 @font-face {
-    font-family: 'Comfortaa Regular';
-    src: local('Aurek-Besh'),
-    local('Aurek-Besh'),
-    url('Aurek-Besh.ttf') format('truetype');
-
+    font-family: StarWars;
+    src: url("/static/css/Aurek-Besh.woff");
 }
 
 .thumbnail
@@ -30,12 +26,18 @@
     margin-left: 105px;
     border-radius: 6px;
     background-size: 9%;
-    font-family: 'Aurek Besh';
+}
+
+.jumbotron h1{
+    font-family: StarWars, "Times New Roman", serif;
+    font-size: 50px;
+    color: white;
+
 }
 
 .h1, .h2, .h3, h1, h2, h3 {
-    margin-top: -28px;
-    margin-bottom: -36px;
+    margin-top: -24px;
+    margin-bottom: -30px;
 }
 
 .thumbnail img
@@ -43,13 +45,13 @@
     margin-top: 10px;
 }
 
+
 body, html {
     background: url("/static/img/tatooine_light.png") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-attachment: scroll;
 }
 
 .item.list-group-item
