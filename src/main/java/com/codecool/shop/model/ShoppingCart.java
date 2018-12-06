@@ -1,15 +1,27 @@
 package com.codecool.shop.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class ShoppingCart extends Product{
-    
+public class ShoppingCart {
 
-    public static List<Product> shoppingCartList = new ArrayList<>();
+    private final static Map<Product, Integer> entries = new HashMap<>();
 
+    /**
+     * Return the content as stream of oredr items.  This is only
+     * consumable once.
+     *
+     * @returns stream of order items.
+     */
+    public Stream<OrderItem> getContents() {
+        return entries
+            .entrySet()
+            .stream()
+            .map(OrderItem::new);
+    }
 
-    public ShoppingCart(String name, float defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
-        super(name, defaultPrice, currencyString, description, productCategory, supplier);
+    public void add(Product product) {
+        entries.compute(product, (k, v) -> (v == null) ? 1 : v+1);
     }
 }
