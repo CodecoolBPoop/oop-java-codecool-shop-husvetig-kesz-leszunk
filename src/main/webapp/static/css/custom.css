@@ -6,27 +6,22 @@
     src: url("/static/css/Aurek-Besh.woff");
 }
 
-.thumbnail
-{
-    margin-bottom: 20px;
-    padding: 0px;
+.thumbnail {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
-    border-radius: 0px;
+    border-radius: .6em;
+    box-shadow: 0 0 0 .4em #debf86;
 }
 
 .jumbotron {
     background-image: url("/static/img/header_logo.png");
-    background-color: #474342;
-    min-height: 50%;
-    margin-top: 12px;
-    background-repeat: no-repeat;
-    background-position: 5vh;
-    margin-right: 105px;
-    margin-left: 105px;
-    border-radius: 6px;
-    background-size: 9%;
-    padding: 0;
+    background: tan;
+    border-radius: .8em;
+    box-shadow: 0 0 0 .6em #655;
+    outline:.7em solid #655;
+    margin-left: 114px;
+    margin-right: 114px;
+    padding-top: 20px;
 }
 
 .jumbotron h1{
@@ -36,9 +31,14 @@
 
 }
 
+#border {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
 .marquee {
     width: border-box;
-    line-height: 160px;
     color: white;
     white-space: nowrap;
     overflow: hidden;
@@ -49,6 +49,7 @@
     display: inline-block;
     padding-left: 100%;
     animation: marquee 35s linear infinite;
+    padding-top: 20px;
 }
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
