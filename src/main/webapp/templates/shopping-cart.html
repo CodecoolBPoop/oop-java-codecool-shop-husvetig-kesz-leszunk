@@ -22,7 +22,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-
+    <script src="/static/js/main.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
 <body>
@@ -36,7 +36,9 @@
     <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
     <p th:text="${prod.getName()}">Product name</p>
     <p th:text="${prod.getPrice()}">Product price</p>
-
+    <button id="plus">Add</button>
+    <p id="counter">1</p>
+    <button id="remove">Remove</button>
 </div>
 <p><a href="/checkout">Checkout</a></p>
 
