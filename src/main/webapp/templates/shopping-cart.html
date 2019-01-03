@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="utf-8" />
-    <meta name="author" content="Codecool" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>Shopping Cart</title>
 
@@ -12,35 +13,41 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
     <script src="/static/js/main.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
 </head>
 <body>
-<div class="jumbotron text-center" id="border">
-    <div class="marquee">
-        <h1>Your Shopping cart.</h1>
+<div class="bg">
+        <div class="jumbotron text-center" id="border">
+            <div class="marquee">
+                <h1>Your Shopping cart.</h1>
+            </div>
+        </div>
+        <p><a href="/">Back</a></p>
+    <div class="container">
+        <div id="products" class="row list-group-transparent">
+        <div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${product}">
+            <img class="group list-group-image" src="http://placehold.it/400x250/000/fff"
+                 th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
+            <p th:text="${prod.getName()}">Product name</p>
+            <p th:text="${prod.getPrice()}">Product price</p>
+            <button id="plus">Add</button>
+            <p id="counter">1</p>
+            <button id="remove">Remove</button>
+        </div>
+        <p><a href="/checkout">Checkout</a></p>
+    </div>
     </div>
 </div>
-    <p><a href="/">Back</a></p>
-<div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${product}">
-    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
-    <p th:text="${prod.getName()}">Product name</p>
-    <p th:text="${prod.getPrice()}">Product price</p>
-    <button id="plus">Add</button>
-    <p id="counter">1</p>
-    <button id="remove">Remove</button>
-</div>
-<p><a href="/checkout">Checkout</a></p>
-
 </body>
 </html>
