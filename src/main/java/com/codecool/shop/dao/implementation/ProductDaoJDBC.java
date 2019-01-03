@@ -16,10 +16,10 @@ public class ProductDaoJDBC implements ProductDao {
     private static final String DB_USER = "leto";
     private static final String DB_PASSWORD = "anevem";
 
-    private static SupplierDaoJdbc instance = null;
+    private static ProductDaoJDBC instance = null;
 
     ProductCategory productCategory;
-    Supplier supplier;
+    Supplier supplier = new Supplier("Hehe", "haha");
 
 
     @Override
@@ -48,13 +48,17 @@ public class ProductDaoJDBC implements ProductDao {
              ResultSet resultSet = statement.executeQuery(query)
         ){
             while (resultSet.next()){
+                String currencyString = "USD";
                 ProductCategory productCategory = new ProductCategory("name", "asd", "ad");
-                Product actTodo = new Product(resultSet.getString("name"),
+                Product actTodo = new Product(resultSet.getInt("id"),
+                        resultSet.getString("name"),
                         resultSet.getFloat("default_price"),
-                        resultSet.getString("descrition"),
+                        currencyString,
                         resultSet.getString("description"),
                         productCategory,
-                        supplier);
+                        supplier,
+                        resultSet.getInt("category_id"),
+                        resultSet.getInt("supplier_id"));
                 resultList.add(actTodo);
             }
 
@@ -92,5 +96,12 @@ public class ProductDaoJDBC implements ProductDao {
     @Override
     public List<Product> getBy(ProductCategory productCategory) {
         return null;
+    }
+
+    public static ProductDaoJDBC getInstance() {
+        if (instance == null) {
+            instance = new ProductDaoJDBC();
+        }
+        return instance;
     }
 }
