@@ -5,17 +5,15 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Supplier;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SupplierDaoJdbc implements SupplierDao {
 
     private static final String DATABASE = "jdbc:postgresql://localhost:5432/webshop";
-    private static final String DB_USER = "maczko";
-    private static final String DB_PASSWORD = "password123";
+    private static final String DB_USER = "postgres";
+    private static final String DB_PASSWORD = "postgres";
 
     private static SupplierDaoJdbc instance = null;
 
@@ -42,6 +40,24 @@ public class SupplierDaoJdbc implements SupplierDao {
 
     @Override
     public Supplier find(int id) {
+        String query = "SELECT * FROM supplier WHERE id ='" + id + "';";
+
+        try (Connection connection = getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query);
+         ){
+            if (resultSet.next()) {
+                Supplier result = new Supplier(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("description"));
+                return result;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return null;
     }
@@ -53,7 +69,26 @@ public class SupplierDaoJdbc implements SupplierDao {
 
     @Override
     public List<Supplier> getAll() {
-        return null;
+        String query = "SELECT * FROM supplier;";
+
+        List<Supplier> resultList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query);
+         ) {
+            while (resultSet.next()) {
+                Supplier supplier = new Supplier(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("description"));
+                resultList.add(supplier);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultList;
     }
 
     private Connection getConnection() throws SQLException {

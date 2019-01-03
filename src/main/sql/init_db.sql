@@ -1,6 +1,6 @@
 create table product
 (
-  id            bigserial not null
+  id            serial not null
     constraint product_pkey
       primary key,
   name          text      not null,
@@ -16,7 +16,7 @@ create table product
 
 create table product_category
 (
-  id          bigserial not null
+  id          serial not null
     constraint product_category_pkey
       primary key,
   name        text      not null,
@@ -24,18 +24,16 @@ create table product_category
   description text      not null
 );
 
-create table supplier
+CREATE TABLE supplier
 (
-  id          bigserial not null
-    constraint supplier_pkey
-      primary key,
-  name        text      not null,
-  description text      not null
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(50) not null,
+  description VARCHAR(255) not null
 );
 
-INSERT INTO supplier (id, name, description)
-values (1, 'Nubian-Design-Collective', 'Digital content and services'),
-       (2, 'Serv-O-Droids', 'Droids');
+INSERT INTO supplier (name, description)
+values ('Nubian-Design-Collective', 'Digital content and services'),
+       ('Serv-O-Droids', 'Droids');
 
 INSERT INTO product_category(id, name, department, description)
 values (1, 'Robotics', 'Hardware', 'Robotics'),
