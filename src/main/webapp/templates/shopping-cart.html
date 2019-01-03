@@ -4,7 +4,12 @@
     <meta charset="utf-8"/>
     <meta name="author" content="Codecool"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
 
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Shopping Cart</title>
 
     <!-- Latest compiled and minified Jquery -->
@@ -35,8 +40,60 @@
         </div>
         <p><a href="/">Back</a></p>
     <div class="container">
+        <table id="cart" class="table table-condensed">
+            <thead>
+            <tr>
+                <th style="width:50%">Product</th>
+                <th style="width:10%">Price</th>
+                <th style="width:8%">Quantity</th>
+                <th style="width:22%" class="text-center">Subtotal</th>
+                <th style="width:10%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="prod,iterStat : ${product}">
+            <tr>
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+                        <div class="col-sm-10">
+                            <h4 th:text="${prod.getName()}">Product name</h4>
+                            <p th:text="${prod.getDescription()}">Product description</p>
+                        </div>
+                    </div>
+                </td>
+                <td th:text="${prod.getPrice()}">Product price</td>
+                <td data-th="Quantity">
+                    <input type="number" class="form-control text-center" value="1">
+                </td>
+                <td data-th="Subtotal" class="text-center">1.99</td>
+                <td class="actions" data-th="">
+                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+            </div>
+            </tbody>
+            <tfoot>
+            <tr class="visible-xs">
+                <td class="text-center"><strong>Total 1.99</strong></td>
+            </tr>
+            <tr>
+                <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                <td colspan="2" class="hidden-xs"></td>
+                <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+                <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+<!--
         <div id="products" class="row list-group-transparent">
         <div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${product}">
+            <div class="thumbnail">
             <img class="group list-group-image" src="http://placehold.it/400x250/000/fff"
                  th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
             <p th:text="${prod.getName()}">Product name</p>
@@ -46,8 +103,7 @@
             <button id="remove">Remove</button>
         </div>
         <p><a href="/checkout">Checkout</a></p>
+        </div>
     </div>
     </div>
-</div>
-</body>
-</html>
+</div> -->

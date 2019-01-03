@@ -6,7 +6,51 @@
     src: url("/static/css/Aurek-Besh.woff");
 }
 
+.table>thead{
+    background-color: rgba(255, 255, 255, 0.71);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
 
+.table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.51);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+@media screen and (max-width: 600px) {
+    table#cart tbody td .form-control{
+        width:20%;
+        display: inline !important;
+    }
+    .actions .btn{
+        width:36%;
+        margin:1.5em 0;
+    }
+
+    .actions .btn-info{
+        float:left;
+    }
+    .actions .btn-danger{
+        float:right;
+    }
+
+    table#cart thead { display: none; }
+    table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
+    table#cart tbody tr td:first-child { background: #333; color: #fff; }
+    table#cart tbody td:before {
+        content: attr(data-th); font-weight: bold;
+        display: inline-block; width: 8rem;
+    }
+
+
+
+    table#cart tfoot td{display:block; }
+    table#cart tfoot td .btn{display:block;}
+
+}
 
 .thumbnail {
     -webkit-border-radius: 0px;
@@ -134,7 +178,7 @@ body, html {
     padding-bottom: 500px;
 }
 
-#cart{
+#shoppingcart{
     float: right;
     height: 60px;
     width: 60px;
