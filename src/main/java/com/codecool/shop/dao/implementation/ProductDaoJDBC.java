@@ -1,6 +1,7 @@
 package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.implementation.jdbc.SupplierDaoJdbc;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
@@ -11,6 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoJDBC implements ProductDao {
+    private static final String DATABASE = "jdbc:postgresql://localhost:5432/webshop";
+    private static final String DB_USER = "leto";
+    private static final String DB_PASSWORD = "anevem";
+
+    private static SupplierDaoJdbc instance = null;
+
+    ProductCategory productCategory;
+    Supplier supplier;
 
 
     @Override
@@ -30,21 +39,22 @@ public class ProductDaoJDBC implements ProductDao {
 
     @Override
     public List<Product> getAll() {
-        return null;
-    }
 
-    /* tring query = "SELECT * FROM todos;";
+        String query = "SELECT * FROM product;";
 
         List<Product> resultList = new ArrayList<>();
-
         try (Connection connection = getConnection();
              Statement statement =connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query);
+             ResultSet resultSet = statement.executeQuery(query)
         ){
             while (resultSet.next()){
-                Product actTodo = new Product(resultSet.getString("title"),
-                        resultSet.getString("id"),
-                        Status.valueOf(resultSet.getString("status")));
+                ProductCategory productCategory = new ProductCategory("name", "asd", "ad");
+                Product actTodo = new Product(resultSet.getString("name"),
+                        resultSet.getFloat("default_price"),
+                        resultSet.getString("descrition"),
+                        resultSet.getString("description"),
+                        productCategory,
+                        supplier);
                 resultList.add(actTodo);
             }
 
@@ -56,7 +66,24 @@ public class ProductDaoJDBC implements ProductDao {
         return resultList;
     }
 
-*/
+
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(
+                DATABASE,
+                DB_USER,
+                DB_PASSWORD);
+    }
+
+    private void executeQuery(String query) {
+        try (Connection connection = getConnection();
+             Statement statement = connection.createStatement();
+        ) {
+            statement.execute(query);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public List<Product> getBy(Supplier supplier) {
         return null;
