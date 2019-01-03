@@ -1,3 +1,4 @@
+
 package com.codecool.shop.dao.implementation.jdbc;
 
 import com.codecool.shop.dao.SupplierDao;
@@ -41,6 +42,7 @@ public class SupplierDaoJdbc implements SupplierDao {
 
     @Override
     public Supplier find(int id) {
+
         return null;
     }
 
