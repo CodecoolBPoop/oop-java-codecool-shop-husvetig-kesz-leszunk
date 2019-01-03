@@ -13,8 +13,8 @@ import java.util.List;
 
 public class ProductDaoJDBC implements ProductDao {
     private static final String DATABASE = "jdbc:postgresql://localhost:5432/webshop";
-    private static final String DB_USER = "leto";
-    private static final String DB_PASSWORD = "anevem";
+    private static final String DB_USER = "postgres";
+    private static final String DB_PASSWORD = "postgres";
 
     private static ProductDaoJDBC instance = null;
 
@@ -88,14 +88,69 @@ public class ProductDaoJDBC implements ProductDao {
             e.printStackTrace();
         }
     }
+
     @Override
     public List<Product> getBy(Supplier supplier) {
-        return null;
+        String query = "SELECT * FROM product JOIN supplier ON product.supplier_id = supplier.id WHERE supplier.id = '" + supplier.getId() + "';";
+
+        List<Product> resultList = new ArrayList<>();
+        try (Connection connection = getConnection();
+             Statement statement =connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query);
+        ){
+            while (resultSet.next()){
+                String currencyString = "USD";
+                ProductCategory productCategory = new ProductCategory("name", "asd", "ad");
+                Product product = new Product(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getFloat("default_price"),
+                        currencyString,
+                        resultSet.getString("description"),
+                        productCategory,
+                        supplier,
+                        resultSet.getInt("category_id"),
+                        resultSet.getInt("supplier_id"));
+                resultList.add(product);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
     }
 
     @Override
     public List<Product> getBy(ProductCategory productCategory) {
-        return null;
+        String query = "SELECT * FROM product JOIN product_category on product.category_id = product_category.id WHERE product_category.id = '" + productCategory.getId() + "';";
+
+        List<Product> resultList = new ArrayList<>();
+        try (Connection connection = getConnection();
+             Statement statement =connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query);
+        ){
+            while (resultSet.next()){
+                String currencyString = "USD";
+                ProductCategory productCategory1 = new ProductCategory("name", "asd", "ad");
+                Product product = new Product(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getFloat("default_price"),
+                        currencyString,
+                        resultSet.getString("description"),
+                        productCategory1,
+                        supplier,
+                        resultSet.getInt("category_id"),
+                        resultSet.getInt("supplier_id"));
+                resultList.add(product);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
     }
 
     public static ProductDaoJDBC getInstance() {
