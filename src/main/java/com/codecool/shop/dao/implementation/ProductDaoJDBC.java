@@ -7,6 +7,7 @@ import com.codecool.shop.model.Supplier;
 
 import java.sql.*;
 import java.math.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoJDBC implements ProductDao {
@@ -32,6 +33,30 @@ public class ProductDaoJDBC implements ProductDao {
         return null;
     }
 
+    /* tring query = "SELECT * FROM todos;";
+
+        List<Product> resultList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             Statement statement =connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query);
+        ){
+            while (resultSet.next()){
+                Product actTodo = new Product(resultSet.getString("title"),
+                        resultSet.getString("id"),
+                        Status.valueOf(resultSet.getString("status")));
+                resultList.add(actTodo);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
+    }
+
+*/
     @Override
     public List<Product> getBy(Supplier supplier) {
         return null;
